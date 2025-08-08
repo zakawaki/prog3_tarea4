@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Contacto</title>
+    
+ 
+    <style>
+        .edit-form {
+  background-color: #f9f9f9;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.edit-form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.edit-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 20px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.edit-form button:hover {
+  background-color: #218838;
+}
+
+    </style>
+
+ 
+</head>
+<body>
+    
+    <h1>Editar Contacto</h1>
+    <form method="post" action="{{ url_for('edit_contact', index=index) }}">
+
+        <label for="name">Nombre:</label><br>
+<input type="text" id="name" name="name" 
+       pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" 
+       title="Solo se permiten letras y espacios" 
+       value="{{ contact.name }}" required><br>
+
+        <label for="email">Correo:</label><br>
+        <input type="email" id="email" name="email" value="{{ contact.email }}" required><br>
+
+        <label for="phone">Teléfono:</label><br>
+        <input type="number" id="phone" name="phone" value="{{ contact.phone }}" required><br><br>
+
+        <input type="submit" value="Actualizar">
+    </form>
+    <br>
+    <a href="{{ url_for('dashboard') }}">Cancelar</a>
+    
+</body>
+</html>
